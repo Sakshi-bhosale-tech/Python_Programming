@@ -60,5 +60,54 @@ while True :
         print("enter valid option ")
     
     
+# You are given following list of stocks and their prices in last 3 days,
+# Stock	Prices
+# info	[600,630,620]
+# ril	[1430,1490,1567]
+# mtl	[234,180,160]
+# Write a program that asks user for operation. Value of operations could be,
+# print: When user enters print it should print following,
+# info ==> [600, 630, 620] ==> avg:  616.67
+# ril ==> [1430, 1490, 1567] ==> avg:  1495.67
+# mtl ==> [234, 180, 160] ==> avg:  191.33
+# add: When user enters 'add', it asks for stock ticker and price. 
+# If stock already exist in your list (like info, ril etc) then it will append the price to the list.
+# Otherwise it will create new entry in your dictionary. For example entering 'tata' 
+# and 560 will add tata ==> [560] to the dictionary of stocks. 
+import statistics
+Info = {"info":[600,630,620] ,"ril" :[1430,1490,1567] ,"mtl":[234,180,160]}
 
+print ("---Menu---\n 1.print \n 2.add ")
+a = int(input("enter the the option :- "))
+    
+if a == 1:
+    for c ,p in Info.items():
+        avg = statistics.mean(p)
+        print(f"{c}==>{p}  ==> avg: ",round(avg,2))
+elif a == 2:
+    new_name = input("Enter a stock ticker to add:-  ")
+    p = input("Enter price of this stock:")
+    if new_name in Info :
+        Info[new_name].append(p)
+    else :
+        Info[new_name]= p
+        print(Info)
+        
+# Write circle_calc() function that takes radius of a circle as an input from user and 
+# then it calculates and returns area, circumference and diameter. 
+# You should get these values in your main program by calling circle_calc function and 
+# then print them 
 
+import math
+
+def circle_calc(radius):
+    area=math.pi*(radius**2)
+    circumference=2*math.pi*radius
+    diameter=2*radius
+    return area, circumference,diameter
+
+if __name__=="__main__":
+    r=input("Enter a radius:")
+    r=float(r)
+    area, c, d = circle_calc(r)
+    print(f"area {area}, circumference {c}, diameter {d}")
